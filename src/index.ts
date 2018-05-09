@@ -1,6 +1,7 @@
 import app from "./App";
+import { PORT } from "./config";
 
-const port = process.env.PORT || 3000;
+const port = PORT || 3000;
 
 app.listen(port, (err: any) => {
     if (err) {
