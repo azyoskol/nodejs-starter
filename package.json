@@ -8,8 +8,8 @@
         "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
         "start:server": "cd server && npm start",
         "start:client": "cd client && npm start",
-        "docker:server:build": "docker build -t app/server ./server",
-        "docker:server:run": "docker run -p 49160:3001 -d app/server"
+        "docker:build": "docker-compose build",
+        "docker:run": "docker-compose up"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"
