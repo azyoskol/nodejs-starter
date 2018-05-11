@@ -6,12 +6,10 @@ When I started this project, my primary focus was on simplicity and ease of use.
 
 ## WORK IN PROGRESS
 
----
 I don't recommend use this project right now.
 
 ## Getting Started
 
----
 The easiest way to get started is to clone the repository:
 
 ```bash
@@ -30,16 +28,12 @@ npm start
 
 ## Features
 
----
-
 - Express.js
 - Typescript
 - Angular
 - Docker
 
-Prerequisites
-
----
+## Prerequisites
 
 - [Docker](https://docs.docker.com/install/)
 - [Node.js](http://nodejs.org)
