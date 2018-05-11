@@ -8,8 +8,6 @@ services:
       - "80:80"
     volumes:
       - /www/public
-    volumes_from: 
-      - web
     networks: 
       - server-tier
   server:
