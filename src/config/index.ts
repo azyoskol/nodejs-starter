@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
-import fs from "fs";
+import * as dotenv from "dotenv";
+import * as fs from "fs";
 
-console.debug("Using .env file to supply config environment  variables.");
+console.debug("Using .env file to supply config environment variables.");
 dotenv.config({path: ".env"});
 
 export const ENVIRONMENT = process.env.NODE_ENV;

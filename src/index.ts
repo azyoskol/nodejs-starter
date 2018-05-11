@@ -1,4 +1,4 @@
-import app from "./App";
+import app from "./app";
 import { PORT } from "./config";
 
 const port = PORT || 3000;
