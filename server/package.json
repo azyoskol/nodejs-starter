@@ -1,14 +1,12 @@
 {
-  "name": "node-server",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node ./index.ts",
-    "test": "jest --forceExit --coverage --verbose",
-    "docker:build": "docker build -t zubarev/server ./server",
-    "docker:run": "docker run -p 49160:3001 -d zubarev/server"
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "test": "jest --forceExit --coverage --verbose"
   },
   "keywords": [],
   "author": "",

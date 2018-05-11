@@ -5,11 +5,13 @@
       "paths": {
           "*": [
               "node_modules/*",
-              "server/types/*"
+              "server/types/*",
+              "client/types/*"
           ]
       }
   },
   "include": [
-      "server/**/*"
+      "server/**/*",
+      "client/**/*"
   ]
 }
