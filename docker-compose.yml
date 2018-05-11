@@ -1,0 +1,8 @@
+version: "2"
+services:
+  app:
+    container_name: server
+    restart: always
+    build: ./server/
+    ports:
+      - "3001:3001"

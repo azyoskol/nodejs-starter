@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build:live",
-    "serve":"./node_modules/.bin/ts-node -- ./src/index.ts",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node ./index.ts",
     "test": "jest --forceExit --coverage --verbose",
-    "docker:build": "docker build -t zubarev/server .",
+    "docker:build": "docker build -t zubarev/server ./server",
     "docker:run": "docker run -p 49160:3001 -d zubarev/server"
   },
   "keywords": [],
