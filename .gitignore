@@ -39,3 +39,6 @@ dist/**/*
 
 # Ignore output from coverage report
 coverage
+
+# Ignore local database
+data

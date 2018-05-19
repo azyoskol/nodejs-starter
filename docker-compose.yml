@@ -1,15 +1,6 @@
 version: "3"
 
 services:
-  nginx:
-    restart: always
-    build: ./nginx/
-    ports:
-      - "80:80"
-    volumes:
-      - /www/public
-    networks: 
-      - server-tier
   server:
     restart: always
     build: ./server/
