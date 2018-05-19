@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
-    "test": "jest --forceExit --coverage --verbose"
+    "run": "node ./dist/index.js",
+    "test": "jest --forceExit --coverage --verbose",
+    "watch": "tsc -w -p ./src",
+    "postinstall": "tsc -p ./src",
+    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +26,8 @@
     "ts-jest": "^22.4.5",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
-    "typescript": "^2.8.3"
+    "typescript": "^2.8.3",
+    "typescript-compiler": "^1.4.1-2"
   },
   "dependencies": {
     "express": "^4.16.3",
