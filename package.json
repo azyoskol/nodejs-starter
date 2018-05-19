@@ -9,7 +9,8 @@
         "start:server": "cd server && npm start",
         "start:client": "cd client && npm start",
         "docker:build": "docker-compose build",
-        "docker:run": "docker-compose up"
+        "docker:run": "docker-compose up",
+        "watch:server": "cd server && npm run watch"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"
