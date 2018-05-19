@@ -2,15 +2,13 @@
     "name": "app",
     "version": "1.0.0",
     "scripts": {
-        "postinstall": "concurrently \"npm run install:server\" \"npm run install:client\"",
-        "install:server": "cd server && npm install",
-        "install:client": "cd client && npm install",
-        "start": "concurrently \"npm run start:server\" \"npm run start:client\"",
-        "start:server": "cd server && npm start",
-        "start:client": "cd client && npm start",
+        "postinstall": "concurrently \"npm run install:server\"",
+        "start": "concurrently \"npm run start:server\"",
         "docker:build": "docker-compose build",
         "docker:run": "docker-compose up",
-        "watch:server": "cd server && npm run watch"
+        "server:install": "cd server && npm install",
+        "server:start": "cd server && npm start",
+        "server:watch": "cd server && npm run watch"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"

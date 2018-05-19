@@ -4,7 +4,7 @@
     {
       "taskName": "tsc-watch",
       "command": "npm",
-      "args": [ "run", "watch:server" ],
+      "args": [ "run", "server:watch" ],
       "isShellCommand": true,
       "isBackground": true,
       "isBuildCommand": true,
