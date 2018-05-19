@@ -30,7 +30,7 @@
       "port": 5858,
       "restart": true,
       "timeout": 60000,
-      "localRoot": "${workspaceFolder}",
+      "localRoot": "${workspaceFolder}/server/dist",
       "remoteRoot": "/usr/src/app/dist",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
@@ -67,6 +67,7 @@
       "port": 5858,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
+      "localRoot": "${workspaceFolder}/server",
       "outFiles": [
         "${workspaceFolder}/server/dist/**/*.js"
       ]
