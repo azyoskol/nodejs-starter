@@ -46,8 +46,8 @@
       "protocol": "auto",
       "port": 5858,
       "restart": true,
-      "localRoot": "${workspaceFolder}",
-      "remoteRoot": "/server",
+      "localRoot": "${workspaceFolder}/server",
+      "remoteRoot": "/usr/src/app/",
       "outFiles": [
         "${workspaceFolder}/server/dist/**/*.js"
       ]

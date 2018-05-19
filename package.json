@@ -4,12 +4,14 @@
     "scripts": {
         "postinstall": "npm run server:install",
         "start": "npm run server:start",
+        "debug": "npm run server:debug",
         "docker:build": "docker-compose build",
         "docker:run": "docker-compose up",
         "docker:debug": "npm run server:docker:debug",
         "server:install": "cd server && npm install",
         "server:start": "cd server && npm start",
         "server:watch": "cd server && npm run watch",
+        "server:debug": "cd server && npm run debug",
         "server:docker:build": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml build",
         "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up -d"
     },
