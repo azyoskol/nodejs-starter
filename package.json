@@ -2,13 +2,15 @@
     "name": "app",
     "version": "1.0.0",
     "scripts": {
-        "postinstall": "concurrently \"npm run install:server\"",
-        "start": "concurrently \"npm run start:server\"",
+        "postinstall": "npm run server:install",
+        "start": "npm run server:start",
         "docker:build": "docker-compose build",
         "docker:run": "docker-compose up",
+        "docker:debug": "npm run server:docker:debug",
         "server:install": "cd server && npm install",
         "server:start": "cd server && npm start",
-        "server:watch": "cd server && npm run watch"
+        "server:watch": "cd server && npm run watch",
+        "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up -d"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"

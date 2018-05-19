@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  server:
+    command: npm run debug
+    volumes:
+      - ./server/dist:/usr/src/app/dist
+    ports:
+      - "3001:3001"
+      - "5858:5858"

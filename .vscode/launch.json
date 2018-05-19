@@ -25,7 +25,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run",
-        "docker-debug"
+        "docker:debug"
       ],
       "port": 5858,
       "restart": true,
