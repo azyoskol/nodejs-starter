@@ -31,9 +31,9 @@
       "restart": true,
       "timeout": 60000,
       "localRoot": "${workspaceFolder}",
-      "remoteRoot": "/server",
+      "remoteRoot": "/usr/src/app/dist",
       "outFiles": [
-        "${workspaceFolder}/server/dist/**/*.js"
+        "${workspaceFolder}/dist/**/*.js"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"

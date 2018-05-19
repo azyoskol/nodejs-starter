@@ -10,7 +10,7 @@
     "test": "jest --forceExit --coverage --verbose",
     "watch": "tsc -w -p ./src",
     "postinstall": "tsc -p ./src",
-    "debug": "concurrently \"npm run run\" \"nodemon --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/index.js\""
+    "debug": "nodemon --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/index.js"
   },
   "keywords": [],
   "author": "",
