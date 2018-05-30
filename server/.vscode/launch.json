@@ -13,7 +13,8 @@
         "${workspaceFolder}/dist/**/*.js"
       ],
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "PORT": "3002"
       }
     },
     {
