@@ -13,7 +13,7 @@
         "server:watch": "cd server && npm run watch",
         "server:debug": "cd server && npm run debug",
         "server:docker:build": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml build",
-        "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up -d"
+        "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"

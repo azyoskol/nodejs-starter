@@ -10,19 +10,19 @@
       "name": "Server:Launch in Docker",
       "preLaunchTask": "tsc-watch",
       "protocol": "auto",
+      "port": 5858,
+      "restart": true,
+      "localRoot": "${workspaceFolder}/server",
+      "remoteRoot": "/usr/src/app",
+      "outFiles": [
+        "${workspaceFolder}/server/dist/**/*.js"
+      ],
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run",
         "docker:debug"
       ],
-      "port": 5858,
-      "restart": true,
       "timeout": 60000,
-      "localRoot": "${workspaceFolder}/server/",
-      "remoteRoot": "/usr/src/app/",
-      "outFiles": [
-        "${workspaceFolder}/server/dist/**/*.js"
-      ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
@@ -35,7 +35,7 @@
       "port": 5858,
       "restart": true,
       "localRoot": "${workspaceFolder}/server",
-      "remoteRoot": "/usr/src/app/",
+      "remoteRoot": "/usr/src/app",
       "outFiles": [
         "${workspaceFolder}/server/dist/**/*.js"
       ]
