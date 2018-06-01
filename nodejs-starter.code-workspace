@@ -1,11 +1,11 @@
 {
   "folders": [{
       "name": "root",
-      "path": "../"
+      "path": "."
     }, {
-      "path": "../server"
+      "path": "server"
     }, {
-      "path": "../repository"
+      "path": "repository"
     }
   ],
   "settings": {
