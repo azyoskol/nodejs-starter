@@ -9,6 +9,10 @@
     }
   ],
   "settings": {
+    "files.exclude": {
+      "**/repository": true,
+      "**/server": true
+    },
     "files.autoSave": "onFocusChange"
   }
 }
