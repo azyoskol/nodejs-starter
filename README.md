@@ -32,8 +32,8 @@ You can use you favorite text-editor, but more comfortable work I recommend use 
 
 Tips:
 
-- Use workspace. Path to current workspace `./vscode/workspace.code-workspace`
-- Debug. Use vs-code debug tools because this repository has awesome configuration. It help you improve your productivity.
+- **Use workspace**. Path to current workspace `./vscode/workspace.code-workspace`
+- **Debug**. Use vs-code debug tools because this repository has awesome configuration. It help you improve your productivity.
 
 ## Features
 
