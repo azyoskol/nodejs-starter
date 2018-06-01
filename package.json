@@ -1,6 +1,7 @@
 {
     "name": "app",
     "version": "1.0.0",
+    "license": "ISC",
     "scripts": {
         "postinstall": "npm run server:install",
         "start": "npm run server:start",

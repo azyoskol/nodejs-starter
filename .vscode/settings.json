@@ -5,7 +5,8 @@
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
     "files.exclude": {
-      "**/server": true,
+      "server": true,
+      "repository": true,
       "**/node_modules": true,
     },
     "search.exclude": {
