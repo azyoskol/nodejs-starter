@@ -34,7 +34,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
     create(item: any, callback?: (error: any, result: T) => void): Promise<T> {
         let self: BaseRepository<T> = this;
         let p: Promise<T> = new Promise<T>((resolve, reject) => {
-            self._model.create(item, (err, res) => {
+            self._model.create(item, (err: any, res:any) => {
                 if (callback) {
                     callback(err, <T>res);
                 }
