@@ -1,25 +1,273 @@
 import {
-    IRead,
-    IWrite,
+    IRepository,
 } from "./interfaces";
 
-export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
+import {
+    Document,
+    Model,
+    Types,
+    ModelFindOneAndUpdateOptions,
+    connection,
+    Error,
+    QueryCursor,
+    DocumentQuery,
+} from "mongoose";
 
-    find(item: T): Promise<T[]> {
-        throw new Error("Method not implemented.");
-    }
-    first(id: string): Promise<T> {
-        throw new Error("Method not implemented.");
+export enum ReadyState  {
+    Disconnected = 0,
+    Connected,
+    Connecting,
+    Disconnecting,
+}
+
+export abstract class BaseRepository<T extends Document> implements IRepository<T> {
+    private _model: Model<Document>;
+
+    constructor(schemaModel: Model<Document>) {
+        this._model = schemaModel;
     }
 
-    // we add to method the async keyword to manipulate the insert result of method.
-    async create(item: T): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    getName(): string {
+        return "Base";
     }
-    update(id: string, item: T): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    create(item: any, callback?: (error: any, result: T) => void): Promise<T> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<T> = new Promise<T>((resolve, reject) => {
+            self._model.create(item, (err, res) => {
+                if (callback) {
+                    callback(err, <T>res);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T>res);
+            });
+        });
+
+        return p;
     }
-    delete(id: string): Promise<boolean> {
-        throw new Error("Method not implemented.");
+
+    retrieve(callback: (error: any, result: T[]) => void): Promise<T[]> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<T[]> = new Promise<T[]>((resolve, reject) => {
+            self._model.find({}, (err, res) => {
+                if (callback) {
+                    callback(err, <T[]>res);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T[]>res);
+            });
+        });
+
+        return p;
+    }
+
+    findById(id: string, callback?: (error: any, result: T) => void): Promise<T> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<T> = new Promise<T>((resolve, reject) => {
+            self._model.findById(id, (err, res) => {
+                if (callback) {
+                    callback(err, <T>res);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T>res);
+            });
+        });
+
+        return p;
+    }
+
+    findOne(condition: any, fields: any, options: any, callback?: (err: any, res: T) => void): Promise<T> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<T> = new Promise<T>((resolve, reject) => {
+            self._model.findOne(condition, fields, options).exec((err, res) => {
+                if (callback) {
+                    callback(err, <T>res);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T>res);
+            });
+        });
+
+        return p;
+    }
+
+    find(condition: any, fields: any, options: any, sortOptions?: any, callback?: (err: any, res: T[]) => void): Promise<T[]> {
+        let p: Promise<T[]> = new Promise<T[]>((resolve, reject) => {
+            let query: DocumentQuery<Document[], Document> = this._model.find(condition, fields, options);
+            if (sortOptions) {
+                query = query.sort(sortOptions);
+            }
+
+            query.exec((err, res) => {
+                if (callback) {
+                    callback(err, <T[]>res);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T[]>res);
+            });
+        });
+
+        return p;
+    }
+
+    count(condition?: any): Promise<number> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<number> = new Promise<number>((resolve, reject) => {
+            self._model.count(condition, (err, count) => {
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(count);
+            });
+        });
+
+        return p;
+    }
+
+    save(item: T, callback?: (error: any, result: T) => void): Promise<T> {
+        let p: Promise<T> = new Promise<T>((resolve, reject) => {
+            item.save((err, result) => {
+                if (callback) {
+                    callback(err, <T>result);
+                }
+
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T>result);
+            });
+            resolve(null);
+        });
+
+        return p;
+    }
+
+    upsert(condition: any, item: any, callback?: (error: any, result: T) => void): Promise<T> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<T> = new Promise<T>((resolve, reject) => {
+            let options: ModelFindOneAndUpdateOptions = {
+                upsert: true
+            };
+            self._model.findOneAndUpdate(condition, item, options, (err, result) => {
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(<T>result);
+            });
+        });
+
+        return p;
+    }
+
+    delete(_id: string, callback?: (error: any) => void): Promise<boolean> {
+        let self: BaseRepository<T> = this;
+        let p:Promise<boolean> = new Promise<boolean>((resolve, reject) => {
+            self._model.remove({ _id: this.toObjectId(_id) }, (err) => {
+                if (callback) {
+                    callback(err);
+                }
+                if (err) {
+                    reject(err);
+                }
+
+                resolve(true);
+            });
+        });
+
+        return p;
+    }
+
+    deleteAll(callback?: (error: any) => void): Promise<boolean> {
+        let self: BaseRepository<T> = this;
+        let p: Promise<boolean> = new Promise<boolean>((resolve, reject) => {
+            self._model.remove({}, (err) => {
+                if (callback) {
+                    callback(err);
+                }
+                if (err) {
+                    reject(err);
+                }
+                resolve(true);
+            });
+        });
+
+        return p;
+    }
+
+    deleteAllItems(items: T[], callback?: (error: any) => void): Promise<boolean> {
+        let self: BaseRepository<T> = this;
+        return this.forEachPromise(items, (item) => self.delete(item));
+    }
+
+    forEachPromise(items: T[], fn: (el: any)=> Promise<any>): Promise<any> {
+        return items.reduce(function (promise: any, item: any): any {
+            return promise.then(function (): any {
+                return fn(item);
+            });
+        }, Promise.resolve());
+    }
+
+    processDocuments(condition: any, processor: (doc: T) => Promise<any>, note?: string): Promise<boolean> {
+        let self: BaseRepository<T> = this;
+        if (!condition) {
+            condition = {};
+        }
+        let p: Promise<boolean> = new Promise<boolean>((resolve, reject) => {
+          let cursor: QueryCursor<Document> = self._model.find(condition).cursor();
+          cursor.on("data", (doc: T) => {
+            // do something with the mongoose document
+            cursor.pause();
+            processor(doc).then(() => {
+                cursor.resume();
+            }).catch((err: Error) => {
+              console.log("Error with MongoDB: " + err.message);
+              console.log(self.getName());
+              console.log(err);
+              console.log(condition);
+
+              if (note) {
+                console.log(note);
+              }
+
+              if (connection.readyState === ReadyState.Connected) {
+                cursor.resume();
+              }
+
+              reject(err);
+
+            });
+          }).on("error", (err: Error) => {
+            // handle the error
+            if (note) {
+              console.log(note);
+            }
+
+            reject(err);
+          }).on("close", () => resolve(true));      // the stream is closed
+        });
+
+        return p;
+      }
+
+    private toObjectId(_id: string): Types.ObjectId {
+        return Types.ObjectId.createFromHexString(_id);
     }
 }
