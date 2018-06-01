@@ -1,6 +1,6 @@
 import {
   BaseRepository,
-} from "../../repository";
+} from "../../../repository";
 import { IUsers } from "../models/users";
 
 
