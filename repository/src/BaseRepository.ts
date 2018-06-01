@@ -40,6 +40,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T>res);
@@ -58,6 +59,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T[]>res);
@@ -76,6 +78,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T>res);
@@ -94,6 +97,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T>res);
@@ -116,6 +120,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T[]>res);
@@ -131,6 +136,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
             self._model.count(condition, (err, count) => {
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(count);
@@ -149,6 +155,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
 
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T>result);
@@ -168,6 +175,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
             self._model.findOneAndUpdate(condition, item, options, (err, result) => {
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(<T>result);
@@ -186,6 +194,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(true);
@@ -204,6 +213,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
                 }
                 if (err) {
                     reject(err);
+                    return;
                 }
                 resolve(true);
             });
@@ -249,6 +259,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
 
               if (connection.readyState === ReadyState.Connected) {
                 cursor.resume();
+                return;
               }
 
               reject(err);
@@ -258,6 +269,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
             // handle the error
             if (note) {
               console.log(note);
+              return;
             }
 
             reject(err);
