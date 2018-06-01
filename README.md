@@ -26,7 +26,7 @@ npm i
 npm start
 ```
 
-## How use
+## How to use
 
 You can use you favorite text-editor, but more comfortable work I recommend use [vs-code](https://code.visualstudio.com/). Since I working on setup best configuration for work process.
 
