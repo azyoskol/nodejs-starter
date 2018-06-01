@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "../"
+    },
+    {
+      "path": "../server"
+    }
+  ],
+  "settings": {
+    "files.autoSave": "onFocusChange"
+  }
+}

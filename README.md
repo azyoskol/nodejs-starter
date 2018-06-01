@@ -1,4 +1,4 @@
-# express + angular starter
+# nodejs starter
 
 A boilerplate for Node.js web applications.
 
@@ -26,11 +26,19 @@ npm i
 npm start
 ```
 
+## How use
+
+You can use you favorite text-editor, but more comfortable work I recommend use [vs-code](https://code.visualstudio.com/). Since I working on setup best configuration for work process.
+
+Tips:
+
+- Use workspace. Path to current workspace `./vscode/workspace.code-workspace`
+- Debug. Use vs-code debug tools because this repository has awesome configuration. It help you improve your productivity.
+
 ## Features
 
 - Express.js
 - Typescript
-- Angular
 - Docker
 
 ## Prerequisites

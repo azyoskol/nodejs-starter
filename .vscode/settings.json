@@ -3,5 +3,12 @@
     "files.autoSave": "onFocusChange",
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
+    "files.exclude": {
+      "**/server": true,
+      "**/node_modules": true,
+    },
+    "search.exclude": {
+      "**/data": true,
+    }
 }
