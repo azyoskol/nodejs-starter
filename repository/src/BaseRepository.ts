@@ -133,7 +133,7 @@ export abstract class BaseRepository<T extends Document> implements IRepository<
     count(condition?: any): Promise<number> {
         let self: BaseRepository<T> = this;
         let p: Promise<number> = new Promise<number>((resolve, reject) => {
-            self._model.count(condition, (err, count) => {
+            self._model.count(condition, (err: any, count: any) => {
                 if (err) {
                     reject(err);
                     return;

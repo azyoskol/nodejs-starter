@@ -4,7 +4,7 @@ import {
 import { IUsers } from "../models/users";
 
 
-class UsersRepository extends BaseRepository<IUsers> {
+export class UsersRepository extends BaseRepository<IUsers> {
   getName(): string {
     return "Users";
   }

@@ -2,19 +2,29 @@ import express from "express";
 import {
   connect
 } from "mongoose";
+
+import {
+  UsersRepository
+} from "./repositories";
+import {
+ usersModelSchema
+} from "./schemas";
 class App {
     public express: any;
 
     constructor() {
         this.express = express();
         this.mountRoutes();
+        this.initDataBase();
     }
 
     private mountRoutes(): void {
         const router = express.Router();
-        router.get("/", (req, res) => {
+        router.get("/", async (req, res) => {
+            const userRepository = new UsersRepository(usersModelSchema);
+            const userCount = await userRepository.count();
             res.json({
-                message: "Hello World!",
+                message: "Hello World! user count:" + userCount,
             });
         });
         this.express.use("/", router);
