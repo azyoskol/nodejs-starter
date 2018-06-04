@@ -1,4 +1,4 @@
-import * as grpc from "grpc";
+import { Server, loadPackageDefinition } from "grpc";
 import * as protoloader from "@grpc/proto-loader";
 import * as path from "path";
 import { connect } from "mongoose";
@@ -11,11 +11,31 @@ if(ProtoLibraryPath === null) {
 }
 
 const pathToUserProto: string = path.resolve(ProtoLibraryPath) + "/user.proto";
-const { user: any } = grpc.loadPackageDefinition(protoloader.loadSync(pathToUserProto, {}));
+const { userService } = loadPackageDefinition(protoloader.loadSync(pathToUserProto, {}));
 
 export class App {
+    private server: Server;
+
     constructor() {
+        this.initServer();
         this.initDB();
+    }
+
+    static start(): App {
+       return new App();
+    }
+
+    private initServer(): void {
+        this.server = new Server();
+
+        this.server.addService(userService.users.UsersService.service, {
+            get(call: any, callback: any): any {
+                const payload: any = {
+                    id: 1
+                };
+                callback(payload);
+            }
+        });
     }
 
     private initDB(): void {

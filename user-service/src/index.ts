@@ -1,1 +1,3 @@
-import * as userService from "./app";
+import { App } from "./app";
+
+App.start();
