@@ -1,18 +1,23 @@
 {
-  "folders": [{
+  "folders": [
+    {
       "name": "root",
       "path": "."
-    }, {
+    },
+    {
       "path": "server"
-    }, {
+    },
+    {
       "path": "repository"
+    },
+    {
+      "path": "user-service"
+    },
+    {
+      "path": "models"
     }
   ],
   "settings": {
-    "files.exclude": {
-      "repository": true,
-      "server": true
-    },
     "files.autoSave": "onFocusChange"
   }
 }

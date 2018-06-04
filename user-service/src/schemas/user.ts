@@ -1,13 +1,12 @@
-
 import {
   Schema,
   model,
   Document,
   Model,
 } from "mongoose";
-import { IUsers } from "../models";
+import { IUserDto } from "../models";
 
-export const usersSchema = new Schema({
+const usersSchema: Schema = new Schema({
   name: {
     type: String,
     required: true,
@@ -34,8 +33,8 @@ export const usersSchema = new Schema({
   }
 }).pre("save", (next) => {
   if (this._doc) {
-    let doc = <IUsers>this._doc;
-    let now = new Date();
+    const doc: any = <IUserDto>this._doc;
+    const now: Date = new Date();
     if (!doc.createdAt) {
       doc.createdAt = now;
     }
