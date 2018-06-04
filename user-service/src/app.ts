@@ -36,6 +36,8 @@ export class App {
                 callback(payload);
             }
         });
+        this.server.bind("any ip");
+        this.server.start();
     }
 
     private initDB(): void {
