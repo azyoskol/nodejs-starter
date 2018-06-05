@@ -5,13 +5,13 @@
       "path": "."
     },
     {
-      "path": "server"
-    },
-    {
-      "path": "repository"
+      "path": "gateway"
     },
     {
       "path": "user-service"
+    },
+    {
+      "path": "repository"
     },
     {
       "path": "models"

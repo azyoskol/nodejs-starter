@@ -1,4 +1,4 @@
-import { Server, loadPackageDefinition } from "grpc";
+import { Server, loadPackageDefinition, ServerCredentials } from "grpc";
 import * as protoloader from "@grpc/proto-loader";
 import * as path from "path";
 import { connect } from "mongoose";
@@ -29,6 +29,7 @@ export class App {
         this.server = new Server();
 
         this.server.addService(userService.users.UsersService.service, {
+            // todo: add more methods
             get(call: any, callback: any): any {
                 const payload: any = {
                     id: 1
@@ -36,7 +37,7 @@ export class App {
                 callback(payload);
             }
         });
-        this.server.bind("any ip");
+        this.server.bind("any ip", ServerCredentials.createInsecure());
         this.server.start();
     }
 
