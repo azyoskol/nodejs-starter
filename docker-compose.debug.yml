@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-  server:
+  gateway:
     command: npm run debug
     volumes:
-      - ./server/dist:/usr/src/app/dist
+      - ./gateway/dist:/usr/src/app/dist
     ports:
       - "3001:3001"
       - "5858:5858"

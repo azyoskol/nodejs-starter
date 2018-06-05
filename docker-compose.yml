@@ -1,9 +1,9 @@
 version: "3"
 
 services:
-  server:
+  gateway:
     restart: always
-    build: ./server/
+    build: ./gateway/
     command: npm start
     ports:
       - "3001:3001"
