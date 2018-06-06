@@ -1,7 +1,8 @@
 import express from "express";
 import { load, credentials } from "grpc";
+import path from "path";
 
-const helloWorldService = load(__dirname + "../../proto/helloworld.proto").helloworld;
+const helloWorldService = load(path.resolve(__dirname, "../../proto/helloworld.proto")).helloworld;
 
 class App {
   public express: any;
@@ -17,9 +18,9 @@ class App {
   private mountRoutes(): void {
     const router = express.Router();
     router.get("/", async (req, res) => {
-      this.client.SayHello({ message: "World" }, (message: any) => {
+      this.client.SayHello({ name: "World" }, (message: any) => {
         res.json({
-          message: "Hello World!",
+          message: message.details,
         });
       });
     });

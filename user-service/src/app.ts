@@ -1,12 +1,14 @@
 import { Server, ServerCredentials, load } from "grpc";
 // import { connect } from "mongoose";
+import path from "path";
 
+const helloWorldService: any = load(path.resolve(__dirname, "../../../../proto/helloworld.proto")).helloworld;
 
 export class App {
     private server: Server;
     private helloWorldService: any;
     constructor() {
-        this.helloWorldService = load(__dirname + "../../proto/helloworld.proto").helloworld;
+        this.helloWorldService = helloWorldService;
         this.initServer();
         // this.initDB();
     }
@@ -20,7 +22,7 @@ export class App {
         this.server.addProtoService(this.helloWorldService.Greeter.service, {
             SayHello: (call: any, callback: any) => {
                 console.log(call);
-                callback(null, { message: "Hello " + call.request.name });
+                callback({ message: "Hello " + call.request.name });
             }
         });
 
