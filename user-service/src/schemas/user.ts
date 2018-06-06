@@ -31,7 +31,7 @@ const usersSchema: Schema = new Schema({
     type: Date,
     required: true,
   }
-}).pre("save", (next) => {
+}).pre("save", (next: any) => {
   if (this._doc) {
     const doc: any = <IUserDto>this._doc;
     const now: Date = new Date();
