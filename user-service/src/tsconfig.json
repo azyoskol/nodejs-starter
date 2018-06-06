@@ -8,14 +8,17 @@
         "sourceMap": true,
         "outDir": "../dist/",
         "baseUrl": ".",
+        "skipLibCheck": true,
         "paths": {
             "repository/*":["../../repository/*"],
             "repository":["../../repository"],
             "models":["../../models"],
-            "models/*":["../../models/*"],
-        }
+            "models/*":["../../models/*"]
+        },
     },
     "exclude": [
-      "node_modules"
+      "node_modules",
+      "node_modules/@types/**/*",
+      "**/*.d.ts"
     ]
   }
