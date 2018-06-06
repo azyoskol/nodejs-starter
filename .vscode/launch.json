@@ -12,10 +12,10 @@
       "protocol": "auto",
       "port": 5858,
       "restart": true,
-      "localRoot": "${workspaceFolder}/server",
-      "remoteRoot": "/usr/src/app",
+      "localRoot": "${workspaceFolder}/gateway/dist/",
+      "remoteRoot": "/usr/src/app/dist/",
       "outFiles": [
-        "${workspaceFolder}/server/dist/**/*.js"
+        "${workspaceFolder}/gateway/dist/**/*.js"
       ],
       "runtimeExecutable": "npm",
       "runtimeArgs": [
@@ -34,10 +34,10 @@
       "protocol": "auto",
       "port": 5858,
       "restart": true,
-      "localRoot": "${workspaceFolder}/server",
-      "remoteRoot": "/usr/src/app",
+      "localRoot": "${workspaceFolder}/gateway/",
+      "remoteRoot": "/usr/src/app/",
       "outFiles": [
-        "${workspaceFolder}/server/dist/**/*.js"
+        "${workspaceFolder}/gateway/dist/**/*.js"
       ]
     }
   ]

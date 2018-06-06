@@ -32,7 +32,7 @@
       "port": 5858,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
-      "localRoot": "${workspaceFolder}",
+      "localRoot": "${workspaceFolder}/dist/",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js"
       ]
