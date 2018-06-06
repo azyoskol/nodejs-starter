@@ -22,7 +22,6 @@
         "run",
         "docker:debug"
       ],
-      "timeout": 60000,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
