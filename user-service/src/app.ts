@@ -1,14 +1,14 @@
 import { Server, ServerCredentials, load } from "grpc";
-import { connect } from "mongoose";
+// import { connect } from "mongoose";
 
 
 export class App {
     private server: Server;
     private helloWorldService: any;
     constructor() {
-        this.initServer();
-        this.initDB();
         this.helloWorldService = load(__dirname + "../../proto/helloworld.proto").helloworld;
+        this.initServer();
+        // this.initDB();
     }
 
     static start(): App {
@@ -28,15 +28,15 @@ export class App {
         this.server.start();
     }
 
-    private initDB(): void {
-        const uri: string = "mongodb://localhost/user"; // todo: move to config
-        connect(uri, (err) => {
-            if (err) {
-                console.log(err.message);
-                console.log(err);
-                return;
-            }
-            console.log("Connected to MongoDb");
-        });
-    }
+    // private initDB(): void {
+    //     const uri: string = "mongodb://localhost/user"; // todo: move to config
+    //     connect(uri, (err) => {
+    //         if (err) {
+    //             console.log(err.message);
+    //             console.log(err);
+    //             return;
+    //         }
+    //         console.log("Connected to MongoDb");
+    //     });
+    // }
 }
