@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run start:local",
-    "start:local": "concurrently \"npm run watch\" \"npm run debug\"",
+    "start:local": "npm run postinstall && npm run run",
     "run": "node ./dist/index.js",
     "test": "jest --forceExit --coverage --verbose",
     "watch": "tsc -w -p ./src",

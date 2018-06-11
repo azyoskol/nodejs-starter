@@ -2,13 +2,14 @@ version: "3"
 
 services:
   gateway:
-    command: npm run debug
+    command: npm start
     volumes:
       - ./gateway/dist:/usr/src/app/dist
     ports:
       - "3001:3001"
       - "5858:5858"
   user-service:
+    command: npm start
     volumes:
       - ./repository:/usr/src/app/node_modules/repository
       - ./models:/usr/src/app/node_modules/models
