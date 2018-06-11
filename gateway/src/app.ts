@@ -3,6 +3,7 @@ import { load, credentials } from "grpc";
 import path from "path";
 
 const helloWorldService: any = load(path.resolve(__dirname, "../../proto/helloworld.proto")).helloworld;
+const USER_SERVICE_HOST = process.env.USER_SERVICE_HOSTNAME || "0.0.0.0";
 
 class App {
   public express: any;
@@ -28,7 +29,7 @@ class App {
   }
 
   private initClient() {
-    this.client = new helloWorldService.Greeter("0.0.0.0:50051", credentials.createInsecure());
+    this.client = new helloWorldService.Greeter(`${USER_SERVICE_HOST}:50051`, credentials.createInsecure());
   }
 }
 

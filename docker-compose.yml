@@ -31,11 +31,9 @@ services:
     command: npm run run
     volumes:
       - ./proto:/usr/src/proto
-    ports: 
-      - 50051:50051
-    networks:
+    networks: 
       - server-tier
 networks:
   client-tier:
   server-tier:
-    external: true
+    driver: "bridge"

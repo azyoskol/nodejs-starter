@@ -1,5 +1,8 @@
 FROM node:carbon
 
+# env
+ENV USER_SERVICE_HOSTNAME=user-service
+
 # Create app directory
 WORKDIR /usr/src/app
 
