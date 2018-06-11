@@ -2,7 +2,7 @@ import express from "express";
 import { load, credentials } from "grpc";
 import path from "path";
 
-const helloWorldService = load(path.resolve(__dirname, "../../proto/helloworld.proto")).helloworld;
+const helloWorldService: any = load(path.resolve(__dirname, "../../proto/helloworld.proto")).helloworld;
 
 class App {
   public express: any;
