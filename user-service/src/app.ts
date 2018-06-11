@@ -2,7 +2,7 @@ import { Server, ServerCredentials, load } from "grpc";
 // import { connect } from "mongoose";
 import path from "path";
 
-const helloWorldService: any = load(path.resolve(__dirname, "../../../../proto/helloworld.proto")).helloworld;
+const helloWorldService: any = load(path.resolve(__dirname, "../../proto/helloworld.proto")).helloworld;
 
 export class App {
     private server: Server;

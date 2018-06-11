@@ -22,6 +22,10 @@ cd project-name
 # Install npm dependencies
 npm i
 
+# Local development
+# add link to local packages
+npm run link
+
 # Then simply start your app
 npm start
 ```

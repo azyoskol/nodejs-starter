@@ -10,10 +10,10 @@
         "baseUrl": ".",
         "skipLibCheck": true,
         "paths": {
-            "repository/*":["../../repository/*"],
-            "repository":["../../repository"],
-            "models":["../../models"],
-            "models/*":["../../models/*"]
+          "*":[
+            "node_modules/*",
+            "src/types/*"
+          ]
         },
     },
     "exclude": [

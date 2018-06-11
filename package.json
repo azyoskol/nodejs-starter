@@ -14,7 +14,13 @@
         "server:watch": "cd gateway && npm run watch",
         "server:debug": "cd gateway && npm run debug",
         "server:docker:build": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml build",
-        "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up"
+        "server:docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml up",
+        "link": "concurrently \"npm run link:models\" \"npm run link:repository\"",
+        "link:models": "cd models && npm link",
+        "link:repository": "cd repository && npm link",
+        "unlink": "concurrently \"npm run unlink:models\" \"npm run unlink:repository\"",
+        "unlink:models": "cd models && npm unlink",
+        "unlink:repository": "cd repository && npm unlink"
     },
     "devDependencies": {
         "concurrently": "^3.5.1"

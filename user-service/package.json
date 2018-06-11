@@ -10,6 +10,8 @@
     "test": "jest --forceExit --coverage --verbose",
     "watch": "tsc -w -p ./src",
     "postinstall": "tsc -p ./src",
+    "link:dependency": "npm link models && npm link repository",
+    "unlink:dependency": "npm unlink models && npm unlink repository",
     "debug": "nodemon --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/index.js"
   },
   "dependencies": {
